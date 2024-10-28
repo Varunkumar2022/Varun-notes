@@ -126,12 +126,14 @@ Windows VMs--: 	RDP [Remote desktop protocol] is the default and intended method
 ***********************************************************************************************************
 OSI layers [open systems interconnection]
 -----------------------------------------
-7 layers in OSI model, to establish internet communication between two users, ex:-emails
+7 layers in OSI model, to establish internet communication between two users, ex:-emails from varun --> shiri
 
-7. Application 
-6. Presentation 
-5. Session 
-4. Transport
-3. Network
-2. Data-link
-1. Physical
+7. Application --> user interaction layer --> with browser --> done by HTTPS protocols
+6. Presentation -> application converts to into binary format --> done by SSL/TLS encryption
+5. Session ------> Establishes, manages, and terminates sessions between applications if session is in live [i.e login] --> email will be sent --> done by Remote Procedure Calls (RPC), and NetBIOS
+4. Transport  ---> Transports the data --> done by TCP (Transmission Control Protocol), UDP (User Datagram Protocol)
+3. Network  -----> Manages IP addressing --> done by IP (Internet Protocol), routers
+2. Data-link  ---> manages addressing --> done by switches
+1. Physical  ----> connects to end user [from switches to private ip address] --> done by cables, wi-fi
+
+*************************************************************************************************************
