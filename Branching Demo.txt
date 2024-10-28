@@ -1,0 +1,22 @@
+1. create folder or directly git clone the below link on your local system [command prompt/git bash]
+
+	[https://ankilla11@dev.azure.com/ankilla11/testbranch/_git/testbranch]
+
+#2. it will ask outlook credentials --> enter your buglegal/any out look credentials [even new users alo]--> enter the PAT where it asked for password after entering the out look credentials like user name & pass word
+
+	
+
+3. open the vs code in that folder using short cut command [code .] --> do changes in code--> commit [at source code button at left side] --> enter message at top of commit button --> then sync changes--> then ok button
+
+4. git pull --> if u want to pull the updated code after few days
+
+5. use below command to trace who is doing changes in the code
+
+	--> git config --global user.name "Surendra"
+
+	--> git config --global user.email johndoe@example.com
+
+6. Merge conflicts
+
+--> if two/three persons working on same file like 'surendra.txt' --> when second & third person doing 'commit'--> error message pop-up--> follow the instructions there --> tick on the code which u want to allow --> ignore without tick mark, which code u dont want to commit
+
