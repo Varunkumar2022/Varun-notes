@@ -1,0 +1,4 @@
+created t2 - medium instance
+to access the instance from command prompt or Git bash we need to go the file path first [Ex:- cd C:\Users\DTLP326\Downloads] where our MyServer.pem file located
+there we need to access using command "ssh -i "MyServer.pem" ubuntu@ec2-3-106-57-187.ap-southeast-2.compute.amazonaws.com"
+

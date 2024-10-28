@@ -1,0 +1,28 @@
+-->to install pip on Kudus
+python3 -m pip install --upgrade pip
+
+-->to install mysqlclient on kudus
+python3 -m pip install mysqlclient
+
+-->navigate to below path to check the installed dependencies that are mentioned in requirements.txt
+    /site/wwwroot/antenv/Lib/python3.12/site-packages$
+
+-->linux command to print the path in list view 
+echo $PATH | tr ':' '\n'
+
+-->linux command to print the path
+echo $PATH
+
+-->to create path for cmake/xxx in linux
+export PATH=/home/site/wwwroot/cmake/bin:$PATH
+export PATH=/home/site/wwwroot/antenv/Lib/site-packages/pip:$PATH
+export PATH=c:/users/dtlp326/agent/_work/_tool/python/3.11.9/x64/lib/site-packages:$PATH
+
+
+
+-->to show all the details about django
+pip show django
+
+-->CMake is a build tool like gradle, maven--> it is especially for C++ language 
+-->Dlib is C++ toolkit to create programms in C++ language like face recognition, robotics
+

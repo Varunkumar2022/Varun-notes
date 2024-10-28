@@ -1,0 +1,109 @@
+az command to connect ACR and AKS in AKS cloud shell/azure cli
+[az aks update -g <RG name> -n <AKS name> --attach-acr <ACR name>] ---> updated yaml file generated in the same terminal
+[https://www.youtube.com/watch?v=rE8LJvoWxj4]
+************************************************************************************************************************
+https://www.youtube.com/watch?v=Ox-iZtArfyw&t=1868s [10 micro service application using CI CD]
+https://www.youtube.com/watch?v=PDBoprlJfUw[AKS terrafrom with securty]
+https://www.youtube.com/watch?v=NT_vMuzpXuY[Helm explanation]
+
+Key components
+--------------
+azure ACR
+azure AKS
+azure CI CD--> build pipeline, release pipeline separate
+Docker file for CI CD
+ymal deployment to aks
+Helm deployment to aks
+Application gate way
+Ingress control
+Vnet
+subnet
+*******************************************************
+10-MicroService-Appliction
+*******************************************************
+Service				Language		Description
+-------				--------		------------
+1. frontend			Go			Exposes an HTTP server to serve the website. Does not require signup/login and generates session IDs for all users automatically.
+2. cartservice			C#			Stores the items in the user's shopping cart in Redis and retrieves it.
+3. productcatalogservice	Go			Provides the list of products from a JSON file and ability to search products and get individual products.
+4. currencyservice		Node.js			Converts one money amount to another currency. Uses real values fetched from European Central Bank. It's the highest QPS service.
+5. paymentservice		Node.js			Charges the given credit card info (mock) with the given amount and returns a transaction ID.
+6. shippingservice		Go			Gives shipping cost estimates based on the shopping cart. Ships items to the given address (mock)
+7. emailservice			Python			Sends users an order confirmation email (mock).
+8. checkoutservice		Go			Retrieves user cart, prepares order and orchestrates the payment, shipping and the email notification.
+8. recommendationservice	Python			Recommends other products based on what's given in the cart.
+9. adservice			Java			Provides text ads based on given context words.
+10. loadgenerator		Python/Locust		Continuously sends requests imitating realistic user shopping flows to the frontend.
+**************************************************************************************************************************************************************************************************
+Project explanation 
+-------------------
+
+Taken the code from Jaiswal github--> forked to varun github --> 10 microservice application
+[for Helm-chart project]-->Imported the project into Azure repos --> deleted all the unnecessory folders and files --> Just kept src, helm-chart folders, .editorconfig, .gitattributes, .gitignore, Licence, Readme files were kept remaining all were deleted 
+[for YAML-FILE  project]-->Imported the project into Azure repos --> deleted all the unnecessory folders and files --> Just kept src, helm-chart folders, .editorconfig, .gitattributes, .gitignore, Licence, Readme files were kept remaining all were deleted 
+
+HELM-CHRT DEPLOY [code available in github --> https://github.com/Varunkumar2022/10-Microservices-Helm-chart-deploy.git]
+-----------------
+created an ACR
+created an AKS
+created build, release ci/cd pipelines separately
+for build pipeline --> selected build and push to docker repository-->yaml generated
+the generated yaml contain only one stage to push one docker image--> copied that stage code and pasted 11 times for 11 containers --> edited with 11 container names [downloaded yaml file available in notepad++ folder]
+run the build pipeline --> pushes 11 docker containers to ACR
+
+a connection between ACR and AKS shall be established Before initiating release pipeline by runnuig the following command [as UI design was not available to link ACR and AKS]
+[az aks update -g <RG name> -n <AKS name> --attach-acr <ACR name>] ---> updated yaml file generated in the same terminal
+[https://www.youtube.com/watch?v=rE8LJvoWxj4]
+
+for release pipeline --> before creating the release pipeline --> edit the 11 yaml files present in "template" directory by changing the image name [take from ACR, like --> acr002.azurecr.io/adservice:30]
+selected "deploy to AKS using Helm-chart"--> 3 tasks will generate --> Helm install machine, Helm init, Helm deploy--> remove second one Helm init, that is not required 
+give the path of Helm-chart folder
+select artifactory --> select just azure repos --> not artifacts/build pipeline or other -->save and run
+
+***************************************************************************************************************************************************************************************************
+
+YAML DEPLOY [code available in git hub --> https://github.com/Varunkumar2022/10-Microservices-YAML-deploy.git]
+-----------
+created an ACR
+created an AKS
+created build, release ci/cd pipelines separately
+for build pipeline --> selected build and push to docker repository-->yaml generated
+the generated yaml contain only one stage to push one docker image--> copied that stage code and pasted 11 times for 11 containers --> edited with 11 container names [downloaded yaml file available in notepad++ folder]
+run the build pipeline --> pushes 11 docker containers to ACR
+
+a connection between ACR and AKS shall be established Before initiating release pipeline by runnuig the following command [as UI design was not available to link ACR and AKS]
+[az aks update -g <RG name> -n <AKS name> --attach-acr <ACR name>] ---> updated yaml file generated in the same terminal
+[https://www.youtube.com/watch?v=rE8LJvoWxj4]
+
+<---upto this part same for both Yaml and Helm-chart deploy------->
+
+for release pipeline --> edit the yaml file present in "release" directory by changing the image name [take from ACR, like --> acr002.azurecr.io/adservice:30] 
+selected "deploy to AKS"--> give the path of yaml file
+select artifactory --> select just azure repos --> not artifacts/build pipeline or other -->save and run
+
+**************************************************************************************************************************************************************************************************
+Ingress configuration
+---------------------
+[https://www.youtube.com/watch?v=a4Kq6mX4Hr4]
+
+
+Procedure
+----------
+1. create a namespace with name "ingress-nginx' [create namespace before 'deployment/ release pipeline"]
+2. create nginx "ingress-controller" by appling yaml file from official nginx github account by using this command "kubectl apply -f "https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.2.1/deploy/static/provider/cloud/deploy.yaml"]
+	---> ingress-nginx-controller is configured as a load balancer with public ip address 
+3. apply kubectl yaml file from our github or local system using the command "kubectl apply -f "https://raw.githubusercontent.com/Varunkumar2022/Ingress-yaml/refs/heads/main/ingress_resource.yml" [use raw file path]
+	--> edit the file in git-hub by including our 11 micro services names and its port numbers [rules like path and port numbers are configured in this file]
+4. Access the application using that ingress public-ip address
+
+How to create ingress-resource.yml file
+---------------------------------------
+--> create this file and store in github or local system 
+User below file path from github [raw file path]
+kubectl apply -f https://raw.githubusercontent.com/Varunkumar2022/Ingress-yaml/main/ingress_resource.yml
+		[or] https://raw.githubusercontent.com/Varunkumar2022/Ingress-yaml/refs/heads/main/ingress_resource.yml
+
+Dont use this path directly taken from github like this --> [https://github.com/Varunkumar2022/Ingress-yaml/blob/main/ingress_resource.yml]
+The URL using here points to the GitHub webpage version of the file, which includes HTML and other non-YAML data --> We should use the raw version of the file instead.
+
+***************************************************************************************************************************************************************************************************

@@ -1,0 +1,10 @@
+https://wetransfer.com
+We can transfer large files upto 2 GB using wechat
+go to site
+Accept all [no need to sign-in/sign-up]
+add files/folder
+browse files
+click on ellipse
+select get link
+compy link
+share the link

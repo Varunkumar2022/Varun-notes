@@ -1,0 +1,47 @@
+1. database details changed to as follows...
+==============================================================================
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": 'face-db',
+        'USER': 'varun',
+        'HOST': 'face-recog-beaah0fmcre9dch3.eastus-01.azurewebsites.net',        
+        'PASSWORD': 'Sonu@004',
+        'PORT':'3306',
+        'OPTIONS': {
+                      "init_command": "SET foreign_key_checks = 0;",
+                      'charset' : 'utf8mb4',
+                      'sql_mode' : 'traditional',
+                      'use_unicode': True,
+                    #   'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+                 },
+    }    
+}
+==============================================================================
+Actually given as 
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": 'face-db',
+        'USER': 'varun',
+        'HOST': 'face-recog-beaah0fmcre9dch3.eastus-01.azurewebsites.net',        
+        'PASSWORD': 'Sonu@004',
+        'PORT':'3306',
+		}
+		}
+================================================================================	
+
+2. requirements.txt was updated by including all the dependancies available in "Buglegal" main project
+
+3. 0.0.0.0:8000 port connectivity error occured-->
+		--> in local system go to control panal-->
+		--> Control Panel\System and Security\Windows Defender Firewall
+		--> Advanced settings --> added new inbound rule--> included port 8000
+
+4. SCM_DO_BUILD_DURING_DEPLOYMENT [value =true]--> Deploy failed
+5. WEBSITES_INCLUDE_CLOUD_CERTS [value =true] --> Deploy failed [it is not a listed environment variable in azure documentation]
+6. pymysql --> included in requirement.txt
+7. python version 3.11 also --> deploy failed --> when replaced in yaml pipeline scripting
+8. WEB_PORT [value = 8000] included in environment variable for port 8000 error
+9. New run--> python version 3.12 is updated in yaml pipeline, environment variables removed, WEB_PORT [value = 8000] included in environment variable

@@ -1,0 +1,12 @@
+To fork the docker image from public repository into our docker Hub
+-------------------------------------------------------------------
+1. open command prompt in Administrator mode
+2. open docker-desktop in administrator mode
+3. ensure Docker engine is started or not; if not reinstall the docker-desktop
+4. Execute following commands
+--> docker login -u dockerregistry22
+--> docker pull ankillaraghu/buglegal:latest
+--> docker images [just for checking]
+--> docker tag ankillaraghu/buglegal:latest dockerregistry22/buglegal:latest
+--> docker push dockerregistry22/buglegal:latest
+**************************************************************************************

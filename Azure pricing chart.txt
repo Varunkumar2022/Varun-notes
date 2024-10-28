@@ -1,0 +1,6 @@
+considered web app & Database
+-------------------
+cheapest region is ----> Australia all regions ~ $ 122/- 420/-
+moderate is -----> East US ~ $ 135/- 370/-
+high charges ----> India ~ $ 145/- 410/-
+Aurabia countries ---> High cost ~ $ 200/- 

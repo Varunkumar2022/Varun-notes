@@ -1,0 +1,34 @@
+#deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: buglegal-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: buglegal
+  template:
+      labels:
+    metadata:
+        app: buglegal
+    spec:
+      containers:
+      - name: buglegal
+        image: ankillaraghu/buglegal:latest
+        ports:
+        - containerPort: 8080
+------------------------------------------------------------
+#service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: buglegal-service
+spec:
+  selector:
+    app: buglegal
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 8080
+  type: LoadBalancer

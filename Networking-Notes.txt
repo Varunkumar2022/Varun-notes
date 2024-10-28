@@ -1,0 +1,137 @@
+ingress controller
+https://www.youtube.com/watch?v=nLzrJIRpCkw&t=582s
+https://www.youtube.com/watch?v=nuNfCRQ2Yac&t=1s
+--------------------------------------------------------
+
+Kubernetes Networking video
+--https://www.youtube.com/watch?v=JyLtg_SJ1lo
+
+*****************************************************************************************************
+Azure security resources
+------------------------
+
+NSG-----------	layer-4 security [checks only boarding pass, doesn't check luggage in airport]-[checkes only source & destination]
+AZure firewall-	layer-4 & 7 security [checks both boarding pass & luggage in airport]--[checks application content also]
+Application Gateway with Web Application Firewall (WAF)
+Azure Front Door with Web Application Firewall (WAF)
+Azure DDoS Protection
+
+*****************************************************************************************************
+NSG-[Network Security Group]
+----------------------------
+
+layer-4 security [checks only boarding pass, doesn't check luggage in airport]-[checkes only source & destination]
+To establish inbound & out bound rules to 
+-virtual machine
+-AKS node VMs
+-basic firewall at the subnet
+-basic firewall at the network interface level
+
+*****************************************************************************************************
+ASG-[Application security group]
+--------------------------------
+If we have 3 groups of servers 
+1. web servers 
+2. app servers
+3. db servers
+all the VMs in the web servers are grouped as ASG--> this ASG is mentioned in NSG of app servers --> to set inbound and out bound rules
+[group of web server VMs (100 nos) can be allowed --> as a sigle ASG group to a app server VM in the inboud rules]
+steps:
+1. create ASG 
+2. go to VM of web server --> networking--> assign this VM to that ASG
+3. go to NSG of app server --> go to inbound rules --> add ASG to a perticular port
+
+*****************************************************************************************************
+NIC - [Network interface card]
+------------------------------
+it is essential to attach with azure resources like VM, aks node VMs--> to connect with subnet/vnet--> 
+other wise they VM can not communicate with Vnet/sub net
+
+*****************************************************************************************************
+Service end point of Vnet
+-------------------------
+generally we can not configure vnet for storage account/database/keyvolt/any other paas storage service in azure--> we should access thorough internet only [mean public ip only]
+if vnet/subnet[VM/web app] want connect to storage account/database/keyvolt/any other paas storage service
+trafic should route through service end point connected to that vnet/subnet --> it allows authenticated users/it secures the routing process
+
+*****************************************************************************************************
+Private end point
+-----------------
+if we configure a private end point in azure storage account/database/keyvolt/any other paas storage service--> go to networking--> add private end point--> add vnet--> add sub net
+then we can access that resource from the vnet--> it is recommended way and secure way to access such type of paas services
+
+*****************************************************************************************************
+NAT gateway [Network address translation]
+-----------------------------------------
+
+it has a public ip address
+it is configured before to a vnet [100 vms]
+if any one of vm in that vnet raise a out bound request --> Nat gateway acts as middle man
+raise request on behalf of that VM [hides that VM identity]-->
+the received response passed to that particular VM
+
+*****************************************************************************************************
+Azure DNS 
+---------
+It is a service within a Vnet
+It works within a Vnet
+If a vnet has 100 VMs--> each VM is assigned with a name and it is registered in DNS [private ip address allign with that name given by us]
+if we access a vm with that name --> the vm will respond
+
+******************************************************************************************************
+Trafic Manager
+--------------
+
+It has public ip address
+If u deploy application on multiple regions [for desauster recovery] like Australia, Canada, Europe
+the user request goes to DNS ---> Next to Trafic manager --> 
+The traffic manager tells the nearest available region
+the request goes to nearest available region
+
+********************************************************************************************************
+Load balancer
+-------------
+
+It has public ip address
+It works on OSI layer-4 [transport layer]
+
+********************************************************************************************************
+Application gateway
+-------------------
+
+It has public ip address
+It is especially designed for path based routing
+layer-7 routing
+application layer routing
+
+*********************************************************************************************************
+TLS certificate
+---------------
+
+A TLS certificate (Transport Layer Security certificate) is a digital certificate
+When a user browse a website in browser with HTTPS, the web server shows its TLS certificate to the browser to prove its identity. The browser verifies that the certificate was issued by a trusted CA.Then the browser shows "lock" symbol--> the browser confirms it as secure web site
+The primary purpose of a TLS certificate is to encrypt the communication between the client and server  
+TLS certificate ensures that sensitive data like passwords, credit card numbers, and personal information are transmitted securely and privately over the internet.
+
+***********************************************************************************************************
+RDP vs SSH 
+----------
+
+Linux VMs----:  SSH [secure shell] is the preferred method, though RDP can be set up if graphical access is needed.
+Windows VMs--: 	RDP [Remote desktop protocol] is the default and intended method for remote access. 
+		However, it is possible to connect to Linux VMs using RDP in Azure, though it's less common
+		-you can install an RDP server (such as xrdp) on the Linux machine.
+		-Set up a Desktop Environment
+		-Configure Firewall Rules
+***********************************************************************************************************
+OSI layers [open systems interconnection]
+-----------------------------------------
+7 layers in OSI model, to establish internet communication between two users, ex:-emails
+
+7. Application 
+6. Presentation 
+5. Session 
+4. Transport
+3. Network
+2. Data-link
+1. Physical

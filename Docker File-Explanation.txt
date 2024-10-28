@@ -1,0 +1,15 @@
+INSTRUCTIONS:
+FROM --------------> To mention the details of Base image, means our docker image should build on top of whatever the image like Python, Java, Dotnet, Golong official images available in docker hub
+LABEL -------------> [Optional, good practice] To mention the meta data/unwanted data like docker file maintainer email ID
+ENV ---------------> To set the environment variables that can be used later in the Dockerfile or in the container during runtime, like the environment variables mentioned in web app
+WORKDIR -----------> To set the working directory inside the container. If the directory doesn't exist, docker automatically creates it. All the other commands like RUN, COPY, ADD, ENTRYPOINT, CMD are executed here
+COPY --------------> To copy files/directories in to the container from the host machine 
+RUN ---------------> To execute commands during the image-building process, like installing dependencies or setting up the environment.
+CMD ---------------> Specifies the default command to run when the container starts. if multiple commands are defined, only the last command will take effect.
+EXPOSE ------------> To specify the port number to the Docker that the container listens on a specific network port at the runtime
+ENTRYPOINT --------> [This is the path to the executable or script that the container will run] Similar to CMD, but the specified command will always run, even if arguments are passed to the container.
+ADD----------------> Like COPY, but also supports downloading files from URLs and extracting archives
+VOLUME ------------> Declares mount points for volumes [storage]
+ARG ---------------> Defines build-time variables [commands]
+USER --------------> [For security] The USER instruction in a Dockerfile is used to specify which user should run the following commands inside the Docker container. By default, Docker containers run as the root user. For security reasons, it's recommended to run the container as a non-root user, especially in production environments.
+[COPY . .] --------> copy files from current directory to current working directory in the container

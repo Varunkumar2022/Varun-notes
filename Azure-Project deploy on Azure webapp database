@@ -1,0 +1,53 @@
+for Azure Mysql database for flexible server creation, dont select East us region, [only one resource allowed for EastUS]
+take central US--> it will works
+***********************************************************************************************************
+in the web app --> Environment variables
+DO one change 
+create environment variables for NAME, HOST, PASSWORD, USER, SCM_DO_BUILD_DURING_DEPLOYMENT, 
+************************************************************************************************************
+Ceate MY SQL database for flexible servers
+do changes in 3 segments
+
+do changes in networking, add current ip address, add 0 to 225.225.225.225
+do changes in databased-->add database name
+do changes in server parameters -->secure trasport --> OFF
+*************************************************************************************************************
+for zip file load error 
+1--> removed environment variables -->SCM_DO_BUILD_DURING_DEPLOYMENT
+2--> check for wrong details at ALLOWED_HOSTS = ['*', 'localhost', '127.0.0.1', 'face-recog.azurewebsites.net']
+3--> check for wrong details at --> Database --cofiguration code error like below code 
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": 'face-db',
+        'USER': 'varun',
+        'HOST': 'face-recog-beaah0fmcre9dch3.eastus-01.azurewebsites.net',        
+        'PASSWORD': 'Sonu@004',
+		}
+		
+****************************************************************************
+for the error 1045, "Access denied for user 'buglegel'@'52.188.73.50' (using password: YES) 
+Removed the environment variables in the Azure webapp
+*************************************************************************************************************
+for the error "ImportError: libtk8.6.so: cannot open shared object file: No such file or directory"
+disabled as "# from tkinter.messagebox import NO" in the project ehrms--> context_processors.py[line 2]
+[tkinter library is related to GUI, may be developers by mistake keep this when getting the code from R&D the code]
+*************************************************************************************************************
+if distutils module is not found
+run following command
+distutils package is depricated from python version 3.10 onwards
+python -m pip install --upgrade setuptools
+*************************************************************************************************************
+If pipeline failed to start the build
+Delete the available yaml file in azure repos and reconfigure a new pipeline, delete the failed pipeline
+*************************************************************************************************************
+its a monolithic application 
+developed on python django
+used azure resources web app, database, blob storage
+created dev, test and staging environments using deployment slots in web app in the azure portal
+next we have created azure MYSQL database in the azure portal and checked the service connection using MYSQL workbench from our local system
+next we created one organization and a project in azure devops organization and created CI pipeline commonly for dev, test, staging and production environments and created individual release pipelines for dev, test, staging and production environments
+we have enabled the auto deploy option for the pipelines
+and we have enabled auto scaling option for both web app and MYSQL database for high availability
+we have enabled app insights, to monitor the health of the application 

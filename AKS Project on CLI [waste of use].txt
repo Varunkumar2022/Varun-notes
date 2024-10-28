@@ -1,0 +1,31 @@
+To login to the AKS following commands in bash command prompt
+---> az aks get-credentials --resource-group RG-1 --name AKS-cluster001
+for login into AKS we need to provide above command with details like resource-group name, AKS cluster name
+-- we will receive following output text 
+Merged "AKS-cluster001" as current context in /home/varun/.kube/config
+---> next we need to give "kubectl get nodes" command, we will get the list of nodes in the cluster
+---> next we need to create one yaml file using below sequence of commands
+"nano azure-vote.yaml" [create yaml file]
+"kubectl apply -f azure-vote.yaml" [apply the yaml file]
+after this u will get following text
+"""
+deployment.apps/azure-vote-back unchanged
+service/azure-vote-back unchanged
+deployment.apps/azure-vote-front configured
+service/azure-vote-front unchanged
+"""
+---> Next execute following command 
+"kubectl get service azure-vote-front --watch"
+--> the following text will be displayed after couple of minutes [nearly 30 minutes] u will find "EXTERNAL-IP" 
+copy the IP address u find below "EXTERNAL-IP" section and bowse in a browser, we can access the application.
+
+""" 
+NAME               TYPE           CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+azure-vote-front   LoadBalancer   10.0.237.111   <pending>     80:32404/TCP   32m
+"""
+
+Kubernetes commands
+--------------------
+kubectl get nodes
+kubectl get pods
+kubectl get svc

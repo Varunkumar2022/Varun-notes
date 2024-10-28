@@ -1,0 +1,66 @@
+UI related changes that were discussed at the workshop
+
+Discussion Points:
+
+-Divide the newly developed Dashboard template into three separate
+templates: navigation bar , left side menu bar, and base.
+-Convert all third-party links (cdn links) to static files.
+Note: There should only be one CSS and one JS file.
+- All inline CSS should be moved into a single CSS file.
+- Change the picture and page design for the Signin page.
+- Regardless of language, the Select language option should be visible
+in the language selection bar on the Buglegal Homepage.
+- In Buglegal homepage the language display error should update when the
+language changes.
+- Use compressed minified files for CSS, Bootstrap, and JS.
+- Gzip compression should be used for HTML files.
+- Dropdown issue with the admin dashboard's options needs to be fixed.
+- left side menu bar in all modules should not load every time.
+- Either small letters or caps should be used as the font on the left
+side menu.
+- An error handling page should appear in place of the Page Not found
+message.
+- The action button on every page need to always be at the top.
+- Table titles shouldn't be overly wordy.
+- The logo click action should take you to the Buglegal homepage.
+- Animations in the Create project tab should be deleted.
+
+
+Action Items:
+- Divide the newly developed dashboard template into three separate
+templates and provide those files to developers by EOD, to be done by
+Viswanadh and Prasanth.
+- Convert all third-party links (cdn links) to static files to be done
+by all developers.
+
+********************************************************************************************************
+
+Python related changes discussed in the workshop
+
+Discussion Points:
+- We have discussed about the usage of azure boards service.
+- Discussed about using automation testing.
+- Discussed about writing test cases by developers and testers.
+- Discussed about improving the performance of Buglegal.
+- Discussed about maintaining uniformity in entire project.
+- Back navigation should implement in show login page.
+- Auto complete off should implement in show login page.
+- Reset password element should aligned properly.
+- No records found should display if not data present in table.
+- Pagination should visible for more than 20 records.
+- Employee ID should be auto-generated.
+- Default India should display as a country for mobile number field.
+- Should keep track of who is handling the onboarding and hiring rounds.
+- After employee selected , count must change reduced in available jobs.
+- If employee responded to offer letter , then the admin should be
+notified.
+- In Onboarding module , verification module should remove (instance it
+should done by a third party).
+- Convert all third-party links (CDN links) to static files.
+Note: There should only be one CSS and one JS file.
+
+
+
+Action Items:
+- Convert all third-party links (CDN links) to static files by all
+developers.

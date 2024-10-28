@@ -1,0 +1,20 @@
+Git commands to push local to Azure repos
+
+1. go to file--> right lick --> open git bash here--> git clone <type Azure repos url...> [u dont see git hidden file here]
+
+2. go to created file [with file name of cloned azure repos name]--> bring all the out side files into it
+
+3. git add .
+
+4. git commit -m "initial commit"
+
+5. git push origin master/main
+
+************************************************************************************************************
+
+to push local system code to Azure repos using VS code
+
+create new repository in Azure repos--> "Push an existing repository from command line" [2nd option]
+
+Go to vs code --> Open project--> create virtual environment--> run project locally
+

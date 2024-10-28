@@ -1,0 +1,79 @@
+Xampp, VScode, python, workbench, MSSQL on local system
+-------------------------------------------------------
+python PATH should be mentioned in admin account only
+
+Install get.pip.py file
+
+when powershell restrict to run the scripts
+enter into powershell as admin account and run command to unrestrict/remote access
+remote access is recommended as it verifies the script came from official author only
+
+Imp:1 
+To activate the environment run command
+.\.venv\Scripts\activate [.\.venv file is created in our project file, when we create environment]
+
+Imp:2
+if distutils module is not found
+run following command
+distutils package is depricated from python version 3.10 onwards
+python -m pip install --upgrade setuptools
+
+Imp:3
+Database settings in worktride>settings.py folder as below [remove os environment]
+
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.mysql",
+        "NAME": 'buglegal22',
+        'USER': 'root',
+Install MySql
+connect server in workbench
+        'HOST': '127.0.0.1',        
+        'PASSWORD': '', [for localhost should not mention password] 
+        'PORT':'3306',
+
+Imp:3.1
+python manage.py migrate
+[python manage.py makemigrations]
+		
+Imp:4
+In views.py comment the lines from 21 to 63 [Dependencies installation code]
+[By handling dependency installation outside of your application logic, you adhere to best practices and ensure that your application remains secure, portable, and easier to maintain.]
+
+
+Imp:5
+from 'Employeeviews.py' file remove "from fcntl import F_GETFD" [line 3]
+["fcntl" is a undefined module, may be developers by mistake keep this when getting the code from R&D the code]
+
+Imp:6
+for the error in Azure "ImportError: libtk8.6.so: cannot open shared object file: No such file or directory"
+disabled as "# from tkinter.messagebox import NO" in the project ehrms--> context_processors.py[line 2]
+[tkinter library is related to GUI, may be developers by mistake keep this when getting the code from R&D the code]
+
+Imp:6
+to run the application run command any one of the following
+python .\manage.py runserver 127.0.0.0:8000
+python manage.py runserver 127.0.0.0:8000
+python manage.py runserver localhost:8000
+python manage.py runserver
+
+Imp:7
+go to settings.py file and search for allowed host--> 
+add ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+if Disallowed host error appear on browser-->
+*************************************************************************************************************************
+30/08/2024
+Buglegal project at settings.py file
+--commmented the static root line
+--inplace that entered the static directory line 
+
+in views.py file
+removed the import dependancies section 
+and also removed import supporting packages [above the import dependancies section]
+
+in ehrms-- file employees.py file removed 3 rd line
+
+in database file congress=utfmb4 -gct .xx removed throgh out the file
+********************************************************************************************************************
+
+

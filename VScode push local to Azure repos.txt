@@ -1,0 +1,7 @@
+to push code from local to Azure repos using VScode
+
+clone in azure repos to vs code--> open Vs code--> open project folder
+
+go to SRM blade on left hand side
+
+click on commit button --> enter commit message--> click on right tick RHS--> sinc with project

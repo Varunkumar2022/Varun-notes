@@ -1,0 +1,39 @@
+Implimented process
+-------------------
+1. first created a team[group] in project
+2. Invited the users directly in the project & used the group name [all the 80 members of users (50+30 separately as azure allowed only 50 at once) added by separating with symbol ';' after each mail ID]
+   So that all the users were directly added by default in organization and got contributor $ stakeholder previlages
+3. Go to project teams--> and gave common previlages
+4. No need to create organization settings because by using above process we have directly got contributor $ stakeholder previlages
+5. Go to teams-->select team-->Go to settings-->Add Administrator [for sprint access]
+6. Team admins --> can add members & Admins --> can not create teams/groups--> can not change privilages
+7. Changed the project process Basic to Agile--> Go to project settings--> click on Basic at process section-->select Projects tab in the tab menu-->click on 3 dots[ellipsis/ellipsis menu]-->Change process type & save
+
+***************************************************************************************************************************************************************
+
+
+
+we can create users in 3 ways
+Priority 1. Go to project--> Invite [RHS] --> Enter details
+Priority 2. Go to organization settings--> Users--> Add users
+Priority 3. Go to project settings-->Teams--> Exiting team/New team-->Add users [May not work]
+************************************************************************
+
+Manage user permissions 
+Project settings--> Permissions --> Groups--> select our group--> manage group permissions
+Project settings--> Permissions --> Users--> select our group--> manage group permissions
+Go to organization settings--> Users--> click on user --> pick three dots--> Check access level/manage/Resend invitation
+use filte to check Basic users and stalk holder users
+
+*************************************************************************
+
+Buglegal task
+Go to project settings-->Teams--> New team-->Add users
+Project settings--> Permissions --> Groups--> select our group--> manage group permissions [at a time for all the users]
+Go to organization settings--> Users--> click on user --> pick three dots--> Check access level/manage/Resend invitation
+Give stalk holder permissions to all the users--> Check all users has contributor privilage
+Give basic user permissions to Somesh && Prasad--> 
+***************************************************************************
+
+
+

@@ -1,0 +1,23 @@
+To run docker container on local system
+tutorial address [https://learn.microsoft.com/en-us/azure/aks/tutorial-kubernetes-prepare-app?tabs=azure-cli#next-steps]
+---------------------------------------
+--> Install docker
+[Run docker-desktop in Administrator mode, as docker required admin permission as docker will use system level files to run]
+[docker is installed as docker-desktop
+docker-compose also installed by default along with it]
+
+after installation of docker - docker engine was not started
+Installed Ubuntu as WSL 2
+Enabled virtualization using BIOS
+configured docker engine with WSL 2 in the docker portal[ubuntu was installed]
+
+-----------------------------------------------------------
+Open git bash in admin mode [error will through if not run on admin mode]
+executed following commands
+1. git clone https://github.com/Azure-Samples/aks-store-demo.git
+2. cd aks-store-demo
+3. docker compose -f docker-compose-quickstart.yml up -d
+4. docker images
+5. docker ps
+6. navigate to http://localhost:8080
+--------------------------------------------------------------------

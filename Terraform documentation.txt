@@ -1,0 +1,48 @@
+Demo video
+--> https://www.youtube.com/watch?v=wq_sn9ey4KM <---
+
+Terraform import video
+--> https://www.youtube.com/watch?v=oAZjJWfrCEA <----
+
+*************************************************************************************************************************
+Procedure
+---------
+--> install azure CLI for windows from azure official site "https://aka.ms/installazurecliwindowsx64"
+--> open command propt and check for installation as " az version"
+--> install terraform using "chocolatey" in command propt "choco install terraform"
+--> open command propt and check for installation as " terraform version"
+*************************************************************************************
+--> create main.tf file using vs code/vim file in command propt
+--> dump the code brougt from azure official site in the main.tf file
+--> create provider.tf file for provider details [links file between azure and local system] 
+
+--> terraform init [some configuration files will generate]
+--> terraform validate
+--> terraform plan
+--> terraform apply
+
+--> A state file will be generated automatically [after terraform apply command] and maintain the history.
+
+--> create storage account on azure portal --> create container [do naming for storage account & container]
+--> create one backend.tf file taking the reference from terraform official site
+--> edit the backend.tf file --> enter details like RG & storage account & container [keep key name default]
+--> again run "terraform init" command
+--> push all the terraform folder & files to azure repos after implementation/apply
+--------------------------------------------------------------------------------------------------------------
+--> To add the existing resources to terraform
+--> create main.tf file by including the resource details like name, location as shown in the azure portal
+--> create provider.tf file also
+--> now execute "terraform init" command [terraform configuration files created]
+--> now execute "terraform import <resource type>.<resourse name> <resource id>" command --> a state file will generate based on the details mentioned in the main.tf file	
+--> resource id is available at --> go to resource --> overview--> json view--> first line is the resource id
+
+*************************************************************************************************************
+
+way-2 [Terraform implement using azure ci cd pipeline]
+-----------------------------------------------------
+--> create ci pipeline using starter pipeline --> include terraform tasks [import terraform extention from organization settings first] 
+--> create release pipeline --> install terraform --> terrafom apply tasks
+
+**************************************************************************************************************
+
+
