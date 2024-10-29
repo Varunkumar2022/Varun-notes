@@ -7,8 +7,8 @@ Kubernetes Networking video
 --https://www.youtube.com/watch?v=JyLtg_SJ1lo
 
 *****************************************************************************************************
-Azure security resources
-------------------------
+NSG vs Firewall Vs other Azure security resources
+-------------------------------------------------
 
 NSG-----------	layer-4 security [checks only boarding pass, doesn't check luggage in airport]-[checkes only source & destination]
 AZure firewall-	layer-4 & 7 security [checks both boarding pass & luggage in airport]--[checks application content also]
@@ -123,6 +123,7 @@ Windows VMs--: 	RDP [Remote desktop protocol] is the default and intended method
 		-you can install an RDP server (such as xrdp) on the Linux machine.
 		-Set up a Desktop Environment
 		-Configure Firewall Rules
+
 ***********************************************************************************************************
 OSI layers [open systems interconnection]
 -----------------------------------------
@@ -137,3 +138,11 @@ OSI layers [open systems interconnection]
 1. Physical  ----> connects to end user [from switches to private ip address] --> done by cables, wi-fi
 
 *************************************************************************************************************
+Firewall [https://www.youtube.com/watch?v=yswaAKgCKxM]
+------------------------------------------------------
+It act as both NSG & NAT gateway
+It is created within a vnet, and within a seperate subnet--> so create a vnet & subnet first
+next create a firewall & associate with that subnet
+create route table --> create UDR (rules)
+
+***************************************************************************************************************
